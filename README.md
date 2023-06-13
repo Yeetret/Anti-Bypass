@@ -3,6 +3,12 @@
 
 The Anti Bypasser library is a tool that prevents any kinds of hooks, bypassers, sniffers (i.e httpdebugger, fiddler, etc) and allows for secure connection (using secure_connection method in the library).
 
+This also prevents reversers from bypassing your authentication, for example:
+
+KeyAuth
+Auth.GG
+
+KeyAuth and Auth.GG users can use this to prevent any kind of bypassing of their authentication.
 ## Installation
 
 To use the Anti Bypasser library, simply purchase it on the website: https://bitservices.mysellix.io/product/647cf2cb543ef

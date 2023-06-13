@@ -6,7 +6,7 @@ The Anti Bypasser library is a tool that prevents any kinds of hooks, bypassers,
 This also prevents reversers from bypassing your authentication, for example:
 
 KeyAuth\
-Auth.GG\
+Auth.GG
 
 KeyAuth and Auth.GG users can use this to prevent any kind of bypassing of their authentication.
 ## Installation

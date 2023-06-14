@@ -37,7 +37,7 @@ if (antiBypasser.DetectPatches(typeof(Program).Assembly))
 
 ### Preventing Sniffers
 
-To prevent sniffers, create a new instance of the SnifferDetection class and use the DetectSniffer method:
+To prevent sniffers, simply use CheckSniffer
 
 ```csharp
 if (antiBypass.CheckSniffer())
@@ -48,10 +48,22 @@ if (antiBypass.CheckSniffer())
     return;
 }
 ```
+### Preventing Debuggers
 
+To prevent debuggers (managed), simply call CheckDebuggers()
+
+```csharp
+if (antiBypass.CheckDebuggers())
+{
+    Console.ForegroundColor = ConsoleColor.Red;
+    Console.WriteLine("Debugger detected!");
+    Console.ReadKey();
+    return;
+}
+```
 ### Using Secure Connection
 
-To use secure connection, create a new instance of the SecureConnection class and set the necessary certificates:
+To use secure connection, simply use SecureConnection
 
 ```csharp
 List<string> yourCertificates = new List<string>

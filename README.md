@@ -56,7 +56,7 @@ To use secure connection, create a new instance of the SecureConnection class an
 ```csharp
 List<string> yourCertificates = new List<string>
 {
-    "DigiCert TLS"
+    "Your certificates here"
 };
 bool isSuccess = antiBypass.SecureConnection(() => Task.Run(async () =>
 {

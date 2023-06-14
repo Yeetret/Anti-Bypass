@@ -17,7 +17,7 @@ To use the Anti Bypasser library, simply purchase it on the website: https://bit
 
 To initialize the library, create a new instance of the AntiBypasser class with your API key:
 
-```
+```csharp
 var antiBypasser = new AntiBypasser("key");
 ```
 
@@ -25,7 +25,7 @@ var antiBypasser = new AntiBypasser("key");
 
 To prevent bypassers, use the DetectPatches method:
 
-```
+```csharp
 if (antiBypasser.DetectPatches(typeof(Program).Assembly))
 {
     Console.ForegroundColor = ConsoleColor.Red;
@@ -39,7 +39,7 @@ if (antiBypasser.DetectPatches(typeof(Program).Assembly))
 
 To prevent sniffers, create a new instance of the SnifferDetection class and use the DetectSniffer method:
 
-```
+```csharp
 if (antiBypass.CheckSniffer())
 {
     Console.ForegroundColor = ConsoleColor.Red;
@@ -53,7 +53,7 @@ if (antiBypass.CheckSniffer())
 
 To use secure connection, create a new instance of the SecureConnection class and set the necessary certificates:
 
-```
+```csharp
 List<string> yourCertificates = new List<string>
 {
     "DigiCert TLS"

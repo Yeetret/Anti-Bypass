@@ -40,8 +40,7 @@ if (antiBypasser.DetectPatches(typeof(Program).Assembly))
 To prevent sniffers, create a new instance of the SnifferDetection class and use the DetectSniffer method:
 
 ```
-var antiSniff = new SnifferDetection();
-if (antiSniff.DetectSniffer("https://yoururl.com", "IssuerKey"))
+if (antiBypass.CheckSniffer())
 {
     Console.ForegroundColor = ConsoleColor.Red;
     Console.WriteLine("Sniffer detected!");
@@ -55,22 +54,22 @@ if (antiSniff.DetectSniffer("https://yoururl.com", "IssuerKey"))
 To use secure connection, create a new instance of the SecureConnection class and set the necessary certificates:
 
 ```
-var sec = new SecureConnection();
-List<string> certificates = new List<string>
+List<string> yourCertificates = new List<string>
 {
-    "" //this should contain the necessary certificates mentioned in your "sec.Secure_Connect" method
+    "DigiCert TLS"
 };
-
-sec.SetCertificates(certificates);
-bool isSecure = await sec.Secure_Connect(async () =>
+bool isSuccess = antiBypass.SecureConnection(() => Task.Run(async () =>
 {
-    //code to execute here (for example, you want to download a string on a specified url
-});
+    Console.WriteLine(new WebClient().DownloadString("https://virustotal.com"));
 
-if (isSecure)
+}), yourCertificates);
+
+if (isSuccess) //Note that it automatically does not execute the code if it doesn't succeed.
 {
     Console.ForegroundColor = ConsoleColor.Green;
-    Console.WriteLine("Success, code has been successfully executed without any sniffers detected.");
+    Console.WriteLine("Secure connection success.");
+    Console.ReadKey();
+    return;
 }
 ```
 

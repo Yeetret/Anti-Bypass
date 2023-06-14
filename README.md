@@ -60,8 +60,8 @@ List<string> yourCertificates = new List<string>
 };
 bool isSuccess = antiBypass.SecureConnection(() => Task.Run(async () =>
 {
-    Console.WriteLine(new WebClient().DownloadString("https://virustotal.com"));
-
+    //Your code here to securely download or upload something.
+ 
 }), yourCertificates);
 
 if (isSuccess) //Note that it automatically does not execute the code if it doesn't succeed.

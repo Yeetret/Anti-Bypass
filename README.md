@@ -18,12 +18,12 @@ To use the Anti Bypasser library, simply purchase it on the website: https://bit
 To initialize the library, create a new instance of the AntiBypasser class with your API key:
 
 ```csharp
-var antiBypasser = new AntiBypasser("key");
+var antiBypasser = new AntiBypass.AntiBypass("key");
 ```
 
 ### Preventing Bypassers
 
-To prevent bypassers, use the DetectPatches method:
+To prevent bypassers, use the CheckHooks method:
 
 ```csharp
 if (antiBypasser.CheckHooks(typeof(Program).Assembly))
@@ -34,6 +34,15 @@ if (antiBypasser.CheckHooks(typeof(Program).Assembly))
     return;
 }
 ```
+To prevent bypassers and to log them, use the CheckHooks method with these parameters:
+
+if (antiBypasser.CheckHooks(typeof(Program).Assembly), true, "YourDiscordWebhook")
+{
+    Console.ForegroundColor = ConsoleColor.Red;
+    Console.WriteLine("Bypass detected!");
+    Console.ReadKey();
+    return;
+}
 
 ### Preventing Sniffers
 

@@ -26,7 +26,7 @@ var antiBypasser = new AntiBypasser("key");
 To prevent bypassers, use the DetectPatches method:
 
 ```csharp
-if (antiBypasser.DetectPatches(typeof(Program).Assembly))
+if (antiBypasser.CheckHooks(typeof(Program).Assembly))
 {
     Console.ForegroundColor = ConsoleColor.Red;
     Console.WriteLine("Bypass detected!");

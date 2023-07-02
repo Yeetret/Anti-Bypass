@@ -96,4 +96,4 @@ if (isSuccess) //Note that it automatically does not execute the code if it does
 
 ## Discord Server
 
-https://discord.gg/skrkgergAM
+https://discord.gg/YczraKyrbc

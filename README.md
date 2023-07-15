@@ -36,7 +36,7 @@ if (antiBypasser.CheckHooks(typeof(Program).Assembly))
 ```
 To prevent bypassers and to log them, use the CheckHooks method with these parameters:
 ```csharp
-if (antiBypasser.CheckHooks(typeof(Program).Assembly), true, "YourDiscordWebhook")
+if (antiBypasser.CheckHooks(typeof(Program).Assembly, true, "YourDiscordWebhook"))
 {
     Console.ForegroundColor = ConsoleColor.Red;
     Console.WriteLine("Bypass detected!");

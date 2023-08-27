@@ -1,99 +1,85 @@
 
-# Anti Bypasser Library
+# AntiBypass: A Simple Guide
 
-The Anti Bypasser library is a tool that prevents any kinds of hooks, bypassers, sniffers (i.e httpdebugger, fiddler, etc) and allows for secure connection (using secure_connection method in the library).
+## Overview
 
-This also prevents reversers from bypassing your authentication, for example:
+The `AntiBypass` class is a powerful tool for enhancing the security of your software. It offers methods to:
 
-KeyAuth\
-Auth.GG
+1. Detect hooks or patches in your application.
+2. Detect network sniffers.
+3. Secure network connections.
 
-KeyAuth and Auth.GG users can use this to prevent any kind of bypassing of their authentication.
-## Installation
+## Quick Start: Code Example
 
-To use the Anti Bypasser library, simply purchase it on the website: https://bitservices.mysellix.io/product/647cf2cb543ef
-
-## Usage
-
-To initialize the library, create a new instance of the AntiBypasser class with your API key:
+Here's a quick example that demonstrates how to use the `AntiBypass` class:
 
 ```csharp
-var antiBypasser = new AntiBypass.AntiBypass("key");
-```
+using System;
+using System.Collections.Generic;
+using System.Reflection;
+using System.Threading.Tasks;
 
-### Preventing Bypassers
-
-To prevent bypassers, use the CheckHooks method:
-
-```csharp
-if (antiBypasser.CheckHooks(typeof(Program).Assembly))
+class Program
 {
-    Console.ForegroundColor = ConsoleColor.Red;
-    Console.WriteLine("Bypass detected!");
-    Console.ReadKey();
-    return;
-}
-```
-To prevent bypassers and to log them, use the CheckHooks method with these parameters:
-```csharp
-if (antiBypasser.CheckHooks(typeof(Program).Assembly, true, "YourDiscordWebhook"))
-{
-    Console.ForegroundColor = ConsoleColor.Red;
-    Console.WriteLine("Bypass detected!");
-    Console.ReadKey();
-    return;
-}
-```
-### Preventing Sniffers
+    static async Task Main(string[] args)
+    {
+        // Initialize AntiBypass with username and license key
+        AntiBypass antiBypass = new AntiBypass("JohnDoe", "1234-5678-ABCD-EFGH");
 
-To prevent sniffers, simply use CheckSniffer
+        // Check for hooks or patches
+        bool hasHooks = await antiBypass.CheckHooks(Assembly.GetExecutingAssembly());
+        Console.WriteLine($"Hooks Detected: {hasHooks}");
 
-```csharp
-if (antiBypass.CheckSniffer())
-{
-    Console.ForegroundColor = ConsoleColor.Red;
-    Console.WriteLine("Sniffer detected!");
-    Console.ReadKey();
-    return;
-}
-```
-### Preventing Debuggers
+        // Check for network sniffers
+        bool hasSniffer = antiBypass.CheckSniffer();
+        Console.WriteLine($"Sniffer Detected: {hasSniffer}");
 
-To prevent debuggers (managed), simply call CheckDebuggers()
-
-```csharp
-if (antiBypass.CheckDebuggers())
-{
-    Console.ForegroundColor = ConsoleColor.Red;
-    Console.WriteLine("Debugger detected!");
-    Console.ReadKey();
-    return;
-}
-```
-### Using Secure Connection
-
-To use secure connection, simply use SecureConnection
-
-```csharp
-List<string> yourCertificates = new List<string>
-{
-    "Your certificates here"
-};
-bool isSuccess = antiBypass.SecureConnection(() => Task.Run(async () =>
-{
-    //Your code here to securely download or upload something.
- 
-}), yourCertificates);
-
-if (isSuccess) //Note that it automatically does not execute the code if it doesn't succeed.
-{
-    Console.ForegroundColor = ConsoleColor.Green;
-    Console.WriteLine("Secure connection success.");
-    Console.ReadKey();
-    return;
+        // Secure a network connection
+        List<string> certificates = new List<string> { "cert1", "cert2" };
+        bool isConnectionSecure = antiBypass.SecureConnection(async () => {
+            // Your secure code here
+            await Task.Delay(1000);
+        }, certificates);
+        Console.WriteLine($"Connection Secure: {isConnectionSecure}");
+    }
 }
 ```
 
-## Discord Server
+## Detailed Guide
 
-https://discord.gg/YczraKyrbc
+### Setting Up
+
+First, you need to initialize the `AntiBypass` class with a username and a license key.
+
+```csharp
+AntiBypass antiBypass = new AntiBypass("username", "license_key");
+```
+
+### Method 1: Detect Hooks
+
+Use this to scan an assembly for any hooks or patches.
+
+```csharp
+bool hooksDetected = await antiBypass.CheckHooks(Assembly.GetExecutingAssembly());
+```
+
+### Method 2: Detect Sniffers
+
+Use this to check for network sniffers on the system.
+
+```csharp
+bool snifferDetected = antiBypass.CheckSniffer();
+```
+
+### Method 3: Secure Connection
+
+Use this to secure a network connection.
+
+```csharp
+List<string> certs = new List<string>() { "cert1", "cert2" };
+bool connectionSecured = antiBypass.SecureConnection(async () => {
+    // Your secure code here
+}, certs);
+```
+
+

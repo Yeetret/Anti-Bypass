@@ -27,7 +27,7 @@ class Program
         AntiBypass antiBypass = new AntiBypass("JohnDoe", "1234-5678-ABCD-EFGH");
 
         // Check for hooks or patches
-        bool hasHooks = await antiBypass.CheckHooks(Assembly.GetExecutingAssembly());
+        bool hasHooks = await antiBypass.CheckHooks(typeof(Program).Assembly);
         Console.WriteLine($"Hooks Detected: {hasHooks}");
 
         // Check for network sniffers
@@ -60,7 +60,7 @@ AntiBypass antiBypass = new AntiBypass("username", "license_key");
 Use this to scan an assembly for any hooks or patches.
 
 ```csharp
-bool hooksDetected = await antiBypass.CheckHooks(Assembly.GetExecutingAssembly());
+bool hooksDetected = await antiBypass.CheckHooks(typeof(Program).Assembly);
 ```
 
 ### Method 2: Detect Sniffers

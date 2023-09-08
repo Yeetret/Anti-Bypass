@@ -52,7 +52,7 @@ class Program
 First, you need to initialize the `AntiBypass` class with a username and a license key.
 
 ```csharp
-AntiBypass antiBypass = new AntiBypass("username", "license_key");
+AntiBypass.AntiBypass antiBypass = new AntiBypass.AntiBypass("username", "license_key");
 ```
 
 ### Method 1: Detect Hooks

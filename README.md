@@ -24,7 +24,7 @@ class Program
     static async Task Main(string[] args)
     {
         // Initialize AntiBypass with username and license key
-        AntiBypass antiBypass = new AntiBypass("JohnDoe", "1234-5678-ABCD-EFGH");
+        AntiBypass.AntiBypass antiBypass = new AntiBypass.AntiBypass("JohnDoe", "1234-5678-ABCD-EFGH");
 
         // Check for hooks or patches
         bool hasHooks = await antiBypass.CheckHooks(typeof(Program).Assembly);
